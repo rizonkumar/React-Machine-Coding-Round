@@ -1,0 +1,59 @@
+.accordion {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.question {
+  font-weight: 500;
+  color: #333;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.show {
+  max-height: 500px;
+}
+
+.accordion-content p {
+  padding: 0 1.5rem 1rem;
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.faq-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
