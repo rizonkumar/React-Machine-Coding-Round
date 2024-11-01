@@ -1,4 +1,4 @@
-````markdown
+
 # Toast Notification Component
 
 This React component creates a customizable toast notification system.
@@ -19,7 +19,7 @@ The `prevState` is used in the `setToast` function to ensure we're working with 
   ```javascript
   setToast((prevToast) => { ... })
   ```
-````
+
 
 This approach guarantees we're working with the latest state, even if there were multiple state updates in quick succession.
 
