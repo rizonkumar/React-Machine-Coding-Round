@@ -1,4 +1,3 @@
-```markdown
 # React Machine Coding Round Collection 🚀
 
 Welcome to my comprehensive collection of React Machine Coding Round questions, implementations, and interview preparation materials! This repository is designed to help developers prepare for React interviews and improve their practical coding skills.
@@ -33,16 +32,6 @@ git clone https://github.com/yourusername/React-Machine-Coding-Round.git
 cd React-Machine-Coding-Round
 ```
 
-3. Install dependencies:
-```bash
-npm install
-```
-
-4. Run the development server:
-```bash
-npm start
-```
-
 ## 📚 How to Use This Repo
 
 1. Each project is contained in its own directory
@@ -66,8 +55,6 @@ If you find this repository helpful, please consider giving it a star! It helps 
 ## 🔗 Connect with Me
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-rizonkumarrahi.in-blue?style=flat-square&logo=google-chrome)](https://rizonkumarrahi.in/)
-
----
 
 <p align="center">Made with ❤️ by <a href="https://rizonkumarrahi.in/">Rizon Kumar Rahi</a></p>
 
