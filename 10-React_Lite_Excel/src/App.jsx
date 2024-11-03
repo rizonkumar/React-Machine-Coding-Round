@@ -1,10 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import Excel from "./components/Excel";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <>Hello</>;
+  return (
+    <>
+      <Excel />
+    </>
+  );
 }
 
 export default App;
