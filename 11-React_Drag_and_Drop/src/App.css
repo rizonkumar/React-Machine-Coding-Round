@@ -1,0 +1,36 @@
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  background: #f4f5f7;
+  border-radius: 8px;
+  min-width: 300px;
+  padding: 16px;
+}
+
+.column-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #172b4d;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task {
+  background: white;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+}
+
+.task:hover {
+  background: #fafbfc;
+}
