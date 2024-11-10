@@ -117,3 +117,63 @@ Time    Calculation    Result    Active Light
 - This creates the continuous cycle: 0 → 1 → 2 → 0 → 1 → 2...
 
 This creates an infinite loop of light changes every 2 seconds in the sequence: green → yellow → red → green → yellow → red...
+
+# Understanding `prevActive` in React State Updates
+
+## Basic Concept
+```javascript
+setActive((prevActive) => (prevActive + 1) % lights.length)
+```
+Think of `prevActive` as a "snapshot" of the most recent state value.
+
+## Why Use `prevActive`?
+
+### 1. State Update Guarantee
+```javascript
+// ❌ Less Safe Way
+setActive(active + 1)  // Might use stale state
+
+// ✅ Safe Way
+setActive(prevActive => prevActive + 1)  // Guaranteed latest state
+```
+
+### 2. Real-World Analogy
+Think of it like a relay race:
+- `prevActive` is like passing the baton
+- Each runner (state update) gets the baton (previous value) directly from the previous runner
+- No confusion about where the baton is
+
+## Example Timeline
+
+```javascript
+Time    prevActive    Calculation    Result
+0s         0         (0 + 1) % 3      1
+2s         1         (1 + 1) % 3      2
+4s         2         (2 + 1) % 3      0
+```
+
+## Common Mistakes to Avoid
+
+```javascript
+// ❌ Problem: Might miss updates
+setActive(active + 1)
+
+// ✅ Solution: Guaranteed to use latest value
+setActive(prevActive => prevActive + 1)
+```
+
+## Why It's Critical in setInterval
+- Multiple updates might queue up
+- `setInterval` runs asynchronously
+- `prevActive` ensures each update builds on the actual previous state
+- Prevents race conditions and state inconsistencies
+
+## Memory Aid
+Think of `prevActive` as a "promise" from React:
+> "I promise to give you the latest state value, no matter what else is happening"
+
+This pattern is essential for:
+- Intervals
+- Counters
+- Toggles
+- Any state that depends on its previous value
