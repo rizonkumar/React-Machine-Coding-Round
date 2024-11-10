@@ -1,0 +1,6 @@
+.signal {
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid black;
+    border-radius: 50%;
+}
