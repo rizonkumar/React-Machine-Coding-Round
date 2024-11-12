@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.stepper {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Container for steps */
+.stepper > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.step-number {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-number.active {
+  background-color: #3b82f6;
+  border-color: #2563eb;
+  color: white;
+  transform: scale(1.1);
+}
+
+.step-line {
+  height: 2px;
+  background-color: #e5e7eb;
+  position: absolute;
+  top: 1.5rem;
+  left: 3rem;
+  right: -3rem;
+  transition: background-color 0.3s ease;
+}
+
+.step-line.active {
+  background-color: #3b82f6;
+}
+
+.step-label {
+  font-size: 0.875rem;
+  color: #4b5563;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Content area */
+.stepper-content {
+  background-color: #f9fafb;
+  padding: 2rem;
+  border-radius: 8px;
+  min-height: 200px;
+  margin-bottom: 2rem;
+}
+
+/* Controls */
+.stepper-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stepper-controls button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stepper-controls button:first-child {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.stepper-controls button:last-child {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.stepper-controls button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stepper-controls button:active {
+  transform: translateY(0);
+}
+
+/* Disabled state for buttons */
+.stepper-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .stepper {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+  }
+
+  .step-number {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .stepper-controls {
+    flex-direction: column;
+  }
+
+  .stepper-controls button {
+    width: 100%;
+  }
+}
