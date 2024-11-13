@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import Item from "./Item.jsx";
 
 function Todo() {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("todos")) || [],
-  );
+  ); // use Indexed DB
 
   const handleChange = (e) => {
     setTask(e.target.value);
@@ -18,6 +19,7 @@ function Todo() {
       isCompleted: false,
       id: new Date().getTime(),
     });
+    console.log("New Todo ------------>>>>>", newTodo);
     setTodos(newTodo);
     setTask("");
   };
@@ -61,32 +63,16 @@ function Todo() {
         </button>
       </div>
       <div className="todos-list">
-        {todos.map((todo) => (
-          <div key={todo.id} className="todo-item">
-            <span
-              className={`todo-text ${todo.isCompleted ? "completed" : ""}`}
-              onClick={() => handleComplete(todo.id)}
-            >
-              {todo.value}
-            </span>
-            <div className="todo-actions">
-              <button
-                className="action-button complete"
-                onClick={() => handleComplete(todo.id)}
-                title="Mark as complete"
-              >
-                ✓
-              </button>
-              <button
-                className="action-button delete"
-                onClick={() => handleDelete(todo.id)}
-                title="Delete task"
-              >
-                ×
-              </button>
-            </div>
-          </div>
-        ))}
+        {todos.map((todo) => {
+          return (
+            <Item
+              key={todo.id}
+              todo={todo}
+              handleComplete={handleComplete}
+              handleDelete={handleDelete}
+            />
+          );
+        })}
       </div>
     </div>
   );
