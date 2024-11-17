@@ -20,9 +20,14 @@ function App() {
       content: <div>Invoice Content</div>,
     },
   ];
+
+  const onTabChangeHandler = (index) => {
+    console.log("Tab Index", index);
+  };
+
   return (
     <>
-      <Tabs data={tabsData} />
+      <Tabs data={tabsData} onTabChange={onTabChangeHandler} />
     </>
   );
 }

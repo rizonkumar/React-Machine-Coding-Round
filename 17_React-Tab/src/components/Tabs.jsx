@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Tabs = ({ data }) => {
+const Tabs = ({ data, onTabChange }) => {
   const [currrentTabIdx, setCurrentTabIdx] = useState(0);
 
   return (
@@ -11,7 +11,10 @@ const Tabs = ({ data }) => {
             className="tabs__item"
             key={index}
             data-active={currrentTabIdx === index}
-            onClick={() => setCurrentTabIdx(index)}
+            onClick={() => {
+              setCurrentTabIdx(index);
+              onTabChange(index);
+            }}
           >
             {item.label}
           </button>
