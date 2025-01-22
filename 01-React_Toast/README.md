@@ -1,4 +1,3 @@
-````markdown
 # Toast Notification Component
 
 This React component creates a customizable toast notification system.
@@ -19,7 +18,6 @@ The `prevState` is used in the `setToast` function to ensure we're working with 
   ```javascript
   setToast((prevToast) => { ... })
   ```
-````
 
 This approach guarantees we're working with the latest state, even if there were multiple state updates in quick succession.
 
@@ -30,6 +28,21 @@ This approach guarantees we're working with the latest state, even if there were
   This might use an outdated state if there were other updates that occurred in between.
 
 Using `prevState` is a more robust approach, especially in components where multiple state updates might occur rapidly or asynchronously.
+
+### 4. Purpose of the Spread Operator in `handleAdd`
+
+The line:
+
+```javascript
+const newToast = [...toast, { toastId, message, type }];
+```
+
+is used to **add a new toast** to the `toast` array without **mutating** the existing state. Here's why it's necessary:
+
+- **Immutability of State:** In React, state should not be directly mutated. Instead of modifying the existing `toast` array, we create a **new copy** by spreading the current `toast` state (`...toast`) and then adding the new toast (`{ toastId, message, type }`).
+- **Why is this important?** React relies on detecting changes in state to re-render components. If we modify the state directly, React wouldn't detect the change. By creating a new array, React can efficiently track the change and trigger a re-render of the component.
+
+This ensures that the UI stays in sync with the state, and the new toast notification is displayed correctly.
 
 ## Code Flow Explanation
 
