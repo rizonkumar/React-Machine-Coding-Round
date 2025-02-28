@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "name": "public",
+    "isFolder": true,
+    "children": [
+      {
+        "id": 2,
+        "name": "index.html",
+        "isFolder": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "src",
+    "isFolder": true,
+    "children": [
+      {
+        "id": 4,
+        "name": "components",
+        "isFolder": true,
+        "children": [
+          {
+            "id": 5,
+            "name": "Header.js",
+            "isFolder": false
+          },
+          {
+            "id": 6,
+            "name": "Sidebar.js",
+            "isFolder": false
+          },
+          {
+            "id": 7,
+            "name": "Content.js",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "data",
+        "isFolder": true,
+        "children": [
+          {
+            "id": 9,
+            "name": "constant.json",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "App.js",
+        "isFolder": false
+      },
+      {
+        "id": 11,
+        "name": "index.js",
+        "isFolder": false
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "package.json",
+    "isFolder": false
+  }
+]
