@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const List = ({ list }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState({});
 
   console.log("List from List.jsx", list);
   return (
@@ -9,12 +9,16 @@ const List = ({ list }) => {
       {list.map((item) => (
         <div key={item.id}>
           {item.isFolder && (
-            <span onClick={() => setOpen((prev) => !prev)}>
-              {open ? "▼" : "▶"}
+            <span
+              onClick={() =>
+                setOpen((prev) => ({ ...prev, [item.id]: !prev[item.id] }))
+              }
+            >
+              {open?.[item.id] ? "▼" : "▶"}
             </span>
           )}
           <span> {item.name}</span>
-          {open && item.children && <List list={item.children} />}
+          {open?.[item.id] && item.children && <List list={item.children} />}
         </div>
       ))}
     </div>
