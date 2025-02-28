@@ -8,7 +8,11 @@ const List = ({ list }) => {
     <div className="container">
       {list.map((item) => (
         <div key={item.id}>
-          {item.isFolder && <span onClick={() => setOpen(!open)}>+</span>}
+          {item.isFolder && (
+            <span onClick={() => setOpen((prev) => !prev)}>
+              {open ? "▼" : "▶"}
+            </span>
+          )}
           <span> {item.name}</span>
           {open && item.children && <List list={item.children} />}
         </div>
