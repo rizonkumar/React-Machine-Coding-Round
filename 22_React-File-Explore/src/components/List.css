@@ -1,0 +1,48 @@
+.container {
+  margin-left: 20px;
+}
+
+.item {
+  margin: 5px 0;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+}
+
+.folder-icon {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 12px;
+  width: 15px;
+  display: inline-block;
+}
+
+.item-name {
+  flex-grow: 1;
+  padding: 5px 0;
+}
+
+.folder {
+  font-weight: bold;
+  color: #2196f3;
+}
+
+.file {
+  color: #333;
+}
+
+.action-icon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
+
+.nested-list {
+  margin-left: 15px;
+}
