@@ -1,5 +1,11 @@
 .container {
   text-align: left;
   padding-left: 20px;
+  cursor: pointer;
   /* border: 1px solid #ccc; */
+}
+
+.icon {
+  width: 20px;
+  margin-left: 20px;
 }
