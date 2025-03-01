@@ -1,24 +1,36 @@
 import { useState } from "react";
 import json from "./data/constant.json";
 import List from "./components/List";
+import "./App.css";
 
 const App = () => {
   const [data, setData] = useState(json);
+  const [showModal, setShowModal] = useState(false);
+  const [newItemName, setNewItemName] = useState("");
+  const [newItemType, setNewItemType] = useState("folder");
+  const [currentParentId, setCurrentParentId] = useState(null);
 
-  const addFolder = (parentId) => {
-    const name = prompt("Enter folder name:");
+  const addItem = (parentId) => {
+    setCurrentParentId(parentId);
+    setNewItemName("");
+    setShowModal(true);
+  };
+
+  const handleCreateItem = () => {
+    if (!newItemName.trim()) return;
+
     const updateTree = (list) => {
       return list.map((item) => {
-        if (item.id === parentId) {
+        if (item.id === currentParentId) {
           return {
             ...item,
             children: [
-              ...item.children,
+              ...(item.children || []),
               {
                 id: Math.random(),
-                name: name, // TODO: we need to ask user to enter name using input feild
-                isFolder: true, //TODO: we need to ask user to create folder/file.
-                children: [],
+                name: newItemName,
+                isFolder: newItemType === "folder",
+                children: newItemType === "folder" ? [] : undefined,
               },
             ],
           };
@@ -29,9 +41,12 @@ const App = () => {
             children: updateTree(item.children),
           };
         }
+        return item;
       });
     };
-    setData((prev) => updateTree(prev));
+
+    setData(updateTree(data));
+    setShowModal(false);
   };
 
   const deleteNode = (itemId) => {
@@ -48,13 +63,54 @@ const App = () => {
           return item;
         });
     };
-    setData((prev) => updateTree(prev));
+    setData(updateTree(data));
   };
 
   return (
     <div className="App">
-      <h1>File/Folder Explore</h1>
-      <List list={data} addFolder={addFolder} deleteNode={deleteNode} />
+      <h1>File/Folder Explorer</h1>
+      <List list={data} addItem={addItem} deleteNode={deleteNode} />
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Create New Item</h3>
+            <div className="type-selector">
+              <label>
+                <input
+                  type="radio"
+                  name="itemType"
+                  value="folder"
+                  checked={newItemType === "folder"}
+                  onChange={() => setNewItemType("folder")}
+                />
+                Folder
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="itemType"
+                  value="file"
+                  checked={newItemType === "file"}
+                  onChange={() => setNewItemType("file")}
+                />
+                File
+              </label>
+            </div>
+            <input
+              type="text"
+              value={newItemName}
+              onChange={(e) => setNewItemName(e.target.value)}
+              placeholder={`Enter ${newItemType} name`}
+              className="name-input"
+            />
+            <div className="modal-buttons">
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+              <button onClick={handleCreateItem}>Create</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
