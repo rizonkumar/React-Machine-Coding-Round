@@ -1,0 +1,123 @@
+.trello-list {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  width: 272px;
+  margin-right: 10px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px 0;
+  position: relative;
+}
+
+.list-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+  padding: 4px 8px;
+  flex-grow: 1;
+}
+
+.list-menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+.list-menu-button:hover {
+  background-color: rgba(9, 30, 66, 0.08);
+}
+
+.list-actions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25);
+  width: 280px;
+  z-index: 10;
+}
+
+.cards-container {
+  padding: 0 8px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.add-card-button {
+  background: none;
+  border: none;
+  color: #5e6c84;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px;
+  text-align: left;
+  width: 100%;
+  border-radius: 0 0 3px 3px;
+}
+
+.add-card-button:hover {
+  background-color: rgba(9, 30, 66, 0.08);
+  color: #172b4d;
+}
+
+.add-card-form {
+  padding: 0 8px 8px;
+}
+
+.card-textarea {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 3px;
+  padding: 8px;
+  border: none;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+}
+
+.form-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.add-button {
+  background-color: #0079bf;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.add-button:hover {
+  background-color: #026aa7;
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #6b778c;
+  padding: 6px;
+}
+
+.cancel-button:hover {
+  color: #172b4d;
+}
