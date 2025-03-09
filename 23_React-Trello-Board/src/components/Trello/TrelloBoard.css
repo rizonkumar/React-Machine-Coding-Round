@@ -1,0 +1,10 @@
+.trello-board {
+  padding: 20px;
+}
+
+.lists-container {
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
