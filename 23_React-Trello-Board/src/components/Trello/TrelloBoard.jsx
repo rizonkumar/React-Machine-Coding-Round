@@ -1,5 +1,5 @@
 import TrelloList from "./TrelloList";
-import "./TrelloBoard.css";
+import "./css/TrelloBoard.css";
 
 const TrelloBoard = () => {
   const lists = []; // TODO: Connect to redux

@@ -1,0 +1,18 @@
+.trello-card {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  cursor: pointer;
+  margin-bottom: 8px;
+  padding: 8px;
+  position: relative;
+}
+.trello-card:hover {
+  background-color: #f5f5f5;
+}
+
+.card-content {
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
