@@ -5,7 +5,6 @@ import TrelloCard from "./TrelloCard";
 import { addCard } from "../../redux/actions";
 
 const TrelloList = ({ list }) => {
-  console.log("TrelloList", list);
   const dispatch = useDispatch();
 
   const [showForm, setShowForm] = useState(false);
@@ -18,6 +17,7 @@ const TrelloList = ({ list }) => {
 
   const handleAddCard = () => {
     if (cardContent.trim()) {
+      console.log("Adding card with content: ", cardContent);
       dispatch(addCard(list.id, cardContent));
       setCardContent("");
       setShowForm(false);

@@ -1,10 +1,62 @@
 .trello-board {
+  background-color: #0079bf;
+  background-image: linear-gradient(135deg, #0079bf 0%, #5067c5 100%);
+  min-height: calc(100vh - 60px);
   padding: 20px;
+  overflow: hidden;
 }
 
 .lists-container {
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  min-height: calc(100vh - 100px);
+  scrollbar-width: thin;
+}
+
+.lists-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.lists-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.lists-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.lists-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.add-list-placeholder {
+  background-color: rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  height: fit-content;
+  min-width: 272px;
+  padding: 12px;
+  margin-right: 10px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.add-list-placeholder:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .trello-board {
+    padding: 10px;
+  }
+
+  .lists-container {
+    align-items: stretch;
+  }
 }

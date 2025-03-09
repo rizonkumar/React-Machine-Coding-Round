@@ -1,18 +1,90 @@
 .trello-card {
   background-color: #fff;
-  border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(9, 30, 66, 0.13);
   cursor: pointer;
-  margin-bottom: 8px;
-  padding: 8px;
+  margin-bottom: 10px;
+  padding: 12px;
   position: relative;
+  transition: all 0.2s ease;
+  overflow: hidden;
 }
+
 .trello-card:hover {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 5px rgba(9, 30, 66, 0.2);
+  transform: translateY(-2px);
+}
+
+.trello-card.is-dragging {
+  transform: rotate(1deg);
+  box-shadow: 0px 8px 16px rgba(9, 30, 66, 0.25);
+  opacity: 0.9;
 }
 
 .card-content {
   word-wrap: break-word;
   overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #172b4d;
+}
+
+.card-edit-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #6b778c;
+  padding: 4px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.trello-card:hover .card-edit-button {
+  opacity: 1;
+}
+
+.card-edit-button:hover {
+  background-color: rgba(9, 30, 66, 0.08);
+  color: #172b4d;
+}
+
+.card-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.card-label {
+  height: 8px;
+  width: 40px;
+  border-radius: 4px;
+}
+
+.card-label.green {
+  background-color: #5aac44;
+}
+
+.card-label.yellow {
+  background-color: #e6c60d;
+}
+
+.card-label.orange {
+  background-color: #e79217;
+}
+
+.card-label.red {
+  background-color: #cf513d;
+}
+
+.card-label.purple {
+  background-color: #7460ee;
+}
+
+.card-label.blue {
+  background-color: #0079bf;
 }
