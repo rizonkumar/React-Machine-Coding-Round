@@ -1,8 +1,11 @@
-import React from "react";
+import "./css/TrelloCard.css";
 
-const TrelloCard = () => {
-  // TrelloCard.jsx - A component for each card
-  return <div>TrelloCard</div>;
+const TrelloCard = ({ card }) => {
+  return (
+    <div className="trello-card" id={card.id}>
+      <div className="card-content">{card?.content}</div>
+    </div>
+  );
 };
 
 export default TrelloCard;
