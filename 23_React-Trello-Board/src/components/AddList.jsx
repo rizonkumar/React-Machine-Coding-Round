@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addList } from "../redux/actions";
+import "./Trello/css/AddList.css";
 
 const AddList = () => {
   const dispatch = useDispatch();
