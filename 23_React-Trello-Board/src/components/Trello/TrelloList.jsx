@@ -2,16 +2,42 @@ import { useDispatch } from "react-redux";
 import "./css/TrelloList.css";
 import { useState } from "react";
 import TrelloCard from "./TrelloCard";
-import { addCard } from "../../redux/actions";
+import { addCard, moveCard } from "../../redux/actions";
 import ListActions from "../ListActions";
-import { Droppable } from "react-beautiful-dnd";
+import { useDrop } from "react-dnd";
+
+const ItemTypes = {
+  CARD: "card",
+};
 
 const TrelloList = ({ list }) => {
   const dispatch = useDispatch();
-
   const [showForm, setShowForm] = useState(false);
   const [cardContent, setCardContent] = useState("");
   const [showActions, setShowActions] = useState(false);
+
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => {
+      const dragIndex = item.index;
+      const dragListId = item.listId;
+      const hoverIndex = list.cards.length;
+      const hoverListId = list.id;
+
+      // Don't replace items with themselves
+      if (dragIndex === hoverIndex && dragListId === hoverListId) {
+        return;
+      }
+
+      // Time to actually perform the action
+      dispatch(
+        moveCard(item.id, dragListId, hoverListId, dragIndex, hoverIndex)
+      );
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
 
   const toggleActions = () => {
     setShowActions(!showActions);
@@ -44,27 +70,19 @@ const TrelloList = ({ list }) => {
         {showActions && <ListActions listId={list.id} onClose={closeActions} />}
       </div>
 
-      <Droppable droppableId={list.id}>
-        {(provided, snapshot) => (
-          <div
-            className={`cards-container ${
-              snapshot.isDraggingOver ? "dragging-over" : ""
-            }`}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {list.cards?.map((card, index) => (
-              <TrelloCard
-                key={card.id}
-                card={card}
-                index={index}
-                listId={list.id}
-              />
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
+      <div
+        ref={drop}
+        className={`cards-container ${isOver ? "dragging-over" : ""}`}
+      >
+        {list.cards?.map((card, index) => (
+          <TrelloCard
+            key={card.id}
+            card={card}
+            index={index}
+            listId={list.id}
+          />
+        ))}
+      </div>
 
       {showForm ? (
         <div className="add-card-form">
