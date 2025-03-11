@@ -3,6 +3,7 @@ import "./css/TrelloList.css";
 import { useState } from "react";
 import TrelloCard from "./TrelloCard";
 import { addCard } from "../../redux/actions";
+import ListActions from "../ListActions";
 
 const TrelloList = ({ list }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,6 @@ const TrelloList = ({ list }) => {
 
   const handleAddCard = () => {
     if (cardContent.trim()) {
-      console.log("Adding card with content: ", cardContent);
       dispatch(addCard(list.id, cardContent));
       setCardContent("");
       setShowForm(false);
@@ -29,6 +29,10 @@ const TrelloList = ({ list }) => {
     setCardContent("");
   };
 
+  const closeActions = () => {
+    setShowActions(false);
+  };
+
   return (
     <div className="trello-list">
       <div className="list-header">
@@ -36,12 +40,7 @@ const TrelloList = ({ list }) => {
         <button className="list-menu-button" onClick={toggleActions}>
           ...
         </button>
-        {showActions && (
-          <div className="list-actions">
-            {/* TODO: Implement List Actions */}
-            <p>Actions menu here</p>
-          </div>
-        )}
+        {showActions && <ListActions listId={list.id} onClose={closeActions} />}
       </div>
 
       <div className="cards-container">
