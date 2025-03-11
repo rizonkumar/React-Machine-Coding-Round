@@ -4,6 +4,7 @@ import { useState } from "react";
 import TrelloCard from "./TrelloCard";
 import { addCard } from "../../redux/actions";
 import ListActions from "../ListActions";
+import { Droppable } from "react-beautiful-dnd";
 
 const TrelloList = ({ list }) => {
   const dispatch = useDispatch();
@@ -43,11 +44,27 @@ const TrelloList = ({ list }) => {
         {showActions && <ListActions listId={list.id} onClose={closeActions} />}
       </div>
 
-      <div className="cards-container">
-        {list?.cards?.map((card) => (
-          <TrelloCard key={card.id} card={card} />
-        ))}
-      </div>
+      <Droppable droppableId={list.id}>
+        {(provided, snapshot) => (
+          <div
+            className={`cards-container ${
+              snapshot.isDraggingOver ? "dragging-over" : ""
+            }`}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {list.cards?.map((card, index) => (
+              <TrelloCard
+                key={card.id}
+                card={card}
+                index={index}
+                listId={list.id}
+              />
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
 
       {showForm ? (
         <div className="add-card-form">
