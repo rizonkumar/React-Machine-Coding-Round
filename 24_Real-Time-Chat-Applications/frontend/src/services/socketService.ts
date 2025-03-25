@@ -1,4 +1,3 @@
-// frontend/src/services/socketService.ts
 import { io, Socket } from "socket.io-client";
 import { Dispatch } from "@reduxjs/toolkit";
 import { addMessage, setConnectionStatus } from "../store/chatSlice";
