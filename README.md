@@ -1,3 +1,5 @@
+#### TO COMPLETE
+
 # React Machine Coding Round Collection 🚀
 
 Welcome to my comprehensive collection of React Machine Coding Round questions, implementations, and interview preparation materials! This repository is designed to help developers prepare for React interviews and improve their practical coding skills.
@@ -5,11 +7,10 @@ Welcome to my comprehensive collection of React Machine Coding Round questions, 
 ## 🎯 What's Inside
 
 - ✨ Real Interview Questions
-- 💻 Complete Implementations  
+- 💻 Complete Implementations
 - 🔍 Detailed Code Flow Explanations
 - 📝 Interview Tips & Tricks
 - 🧪 Best Practices & Optimizations
-
 
 ## 🛠️ Tech Stack
 
@@ -23,11 +24,13 @@ Welcome to my comprehensive collection of React Machine Coding Round questions, 
 ## 🚀 Getting Started
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/React-Machine-Coding-Round.git
 ```
 
 2. Navigate to project:
+
 ```bash
 cd React-Machine-Coding-Round
 ```
@@ -39,8 +42,6 @@ cd React-Machine-Coding-Round
 3. Study the code flow explanations
 4. Practice implementing from scratch
 5. Review interview questions and answers
-
-
 
 ## 🤝 Contributing
 
