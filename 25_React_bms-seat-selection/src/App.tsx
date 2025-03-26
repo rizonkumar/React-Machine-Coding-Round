@@ -1,5 +1,11 @@
+import TheaterLayout from "./components/SeatSelection/TheaterLayout";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <TheaterLayout />
+    </div>
+  );
 };
 
 export default App;
