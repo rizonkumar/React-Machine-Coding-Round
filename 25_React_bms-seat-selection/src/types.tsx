@@ -1,5 +1,3 @@
-// src/types.tsx
-
 export interface TheaterData {
   id: string;
   name: string;
