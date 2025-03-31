@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.transfer-list {
+  display: flex;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transfer-list__section {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.transfer-list__section__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transfer-list__section__items li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transfer-list__section__items li:last-child {
+  border-bottom: none;
+}
+
+.transfer-list__section__items input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.transfer-list__section__items label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.transfer-list__section__items input[type="checkbox"]:checked + label {
+  color: #4caf50;
+  font-weight: bold;
+}
