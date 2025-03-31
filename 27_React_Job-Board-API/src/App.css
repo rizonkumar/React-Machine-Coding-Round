@@ -1,0 +1,73 @@
+.job-board {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  color: #ff6600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.job-card {
+  margin-bottom: 20px;
+}
+
+.job-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.job-card h2 a {
+  color: #000;
+  text-decoration: none;
+}
+
+.job-card h2 a:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 15px 0;
+}
+
+.load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.load-more:hover {
+  background-color: #e65c00;
+}
+
+.load-more:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
