@@ -26,7 +26,24 @@ const App = () => {
     setItemSource({});
   }
 
-  function transferSelectedItems() {}
+  function transferSelectedItems(
+    itemSource,
+    setItemSource,
+    itemTarget,
+    setItemTarget
+  ) {
+    setItemTarget((prevItems) => ({
+      ...prevItems,
+      ...Object.fromEntries(
+        Object.entries(itemSource).filter(([_, checked]) => checked)
+      ),
+    }));
+    setItemSource((prevItems) =>
+      Object.fromEntries(
+        Object.entries(prevItems).filter(([_, checked]) => !checked)
+      )
+    );
+  }
 
   const [itemsLeft, setItemsLeft] = useState(
     generateItemsObject(DEFAULT_ITEMS_LEFT)
@@ -50,13 +67,29 @@ const App = () => {
       </button>
       <button
         aria-label="Transfer selected items to left list"
-        disabled={hasNoSelectedItems(itemsLeft)}
+        disabled={hasNoSelectedItems(itemsRight)}
+        onClick={() =>
+          transferSelectedItems(
+            itemsRight,
+            setItemsRight,
+            itemsLeft,
+            setItemsLeft
+          )
+        }
       >
         <span aria-hidden="true">&lt;</span>
       </button>
       <button
         aria-label="Transfer selected items to right list"
-        disabled={hasNoSelectedItems(itemsRight)}
+        disabled={hasNoSelectedItems(itemsLeft)}
+        onClick={() =>
+          transferSelectedItems(
+            itemsLeft,
+            setItemsLeft,
+            itemsRight,
+            setItemsRight
+          )
+        }
       >
         <span aria-hidden="true">&gt;</span>
       </button>
