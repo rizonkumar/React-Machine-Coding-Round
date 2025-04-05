@@ -1,83 +1,87 @@
 import { useState } from "react";
 import { checkBoxesData } from "./data/constants";
 
+/**
+ * Recursive checkbox component that handles nested checkbox structures
+ * @param {object} props - Component props
+ * @param {array} props.data - The checkbox tree data structure
+ * @param {object} props.checked - Current state of checked items
+ * @param {function} props.setChecked - Function to update checked state
+ */
 const CheckBoxes = ({ data, checked, setChecked }) => {
+  /**
+   * Handles checkbox change events and updates state
+   * @param {boolean} isChecked - New checked state for the item
+   * @param {object} item - The checkbox item being toggled
+   */
   const handleChange = (isChecked, item) => {
-    const updateCheckedState = (items, targetId, newChecked) => {
-      const newState = { ...checked };
+    setChecked((prev) => {
+      // Create new state with current item updated
+      const newState = { ...prev, [item.id]: isChecked };
 
-      // Update the target item and its children recursively
-      const updateItem = (currentItem) => {
-        if (currentItem.id === targetId) {
-          newState[currentItem.id] = newChecked;
-          currentItem.children?.forEach((child) => {
-            newState[child.id] = newChecked;
-            updateItem(child);
-          });
-        } else {
-          currentItem.children?.forEach(updateItem);
-        }
+      /**
+       * Recursively updates all children to match parent's state
+       * @param {object} parentItem - Parent item being processed
+       */
+      const updateChildren = (parentItem) => {
+        // Safely process each child if they exist
+        parentItem?.children?.forEach((child) => {
+          // Update child's state to match parent
+          newState[child?.id] = isChecked;
+          // Recursively process grandchildren if they exist
+          child?.children && updateChildren(child);
+        });
       };
-      items.forEach(updateItem);
 
-      // Update all parents recursively based on children's states
-      const updateParents = (currentItem) => {
-        const parent = findParent(data, currentItem.id);
-        if (parent) {
-          const childrenStates = parent.children.map(
-            (child) => newState[child.id]
-          );
-          const allChecked = childrenStates.every((state) => state === true);
-          const someChecked = childrenStates.some((state) => state === true);
-          newState[parent.id] = allChecked
-            ? true
-            : someChecked
-            ? "indeterminate"
-            : false;
-          updateParents(parent);
-        }
+      // Update all descendants of current item
+      updateChildren(item);
+
+      /**
+       * Verifies and updates parent states based on children
+       * @param {object} item - Current item being verified
+       * @returns {boolean} - Returns true if all children are checked
+       */
+      const verifyChecked = (item) => {
+        // Base case: if no children, return item's checked state
+        if (!item?.children) return newState[item?.id] || false;
+
+        // Check if ALL children are checked
+        const allChildrenChecked = item?.children?.every((child) =>
+          verifyChecked(child)
+        );
+
+        // Update parent's state in newState
+        newState[item?.id] = allChildrenChecked;
+
+        return allChildrenChecked;
       };
-      updateParents(item);
+
+      // Verify and update all top-level items and their hierarchies
+      checkBoxesData.forEach((item) => verifyChecked(item));
 
       return newState;
-    };
-
-    const newCheckedState = updateCheckedState(data, item.id, isChecked);
-    setChecked(newCheckedState);
-  };
-
-  const findParent = (items, childId) => {
-    for (const item of items) {
-      if (item.children?.some((child) => child.id === childId)) {
-        return item;
-      }
-      if (item.children) {
-        const found = findParent(item.children, childId);
-        if (found) return found;
-      }
-    }
-    return null;
+    });
   };
 
   return (
-    <div>
+    <div className="checkbox-container">
       {data.map((item) => (
-        <div key={item.id} className="parent">
+        <div key={item.id} className="parent-item">
+          {/* Checkbox input element */}
           <input
             type="checkbox"
             id={item.id}
-            checked={checked[item.id] === true}
-            ref={(el) => {
-              if (el) {
-                el.indeterminate = checked[item.id] === "indeterminate";
-              }
-            }}
+            checked={checked[item?.id] || false}
             onChange={(e) => handleChange(e.target.checked, item)}
+            aria-labelledby={`label-${item.id}`}
           />
-          <span>{item.name}</span>
+          {/* Checkbox label */}
+          <span id={`label-${item.id}`}>{item.name}</span>
+
+          {/* Recursively render children if they exist */}
           {item.children && (
             <CheckBoxes
-              data={item.children}
+              data={item?.children}
               checked={checked}
               setChecked={setChecked}
             />
@@ -94,13 +98,15 @@ const App = () => {
   return (
     <div className="app">
       <h1>Nested Checkboxes</h1>
+
       <CheckBoxes
         data={checkBoxesData}
         checked={checked}
         setChecked={setChecked}
       />
-      <div className="debug-state">
-        <h3>Current State:</h3>
+
+      <div className="debug-panel">
+        <h3>Current Check State:</h3>
         <pre>{JSON.stringify(checked, null, 2)}</pre>
       </div>
     </div>
