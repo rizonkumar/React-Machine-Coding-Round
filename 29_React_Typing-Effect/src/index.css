@@ -1,0 +1,12 @@
+span {
+  animation: hideAndShow 1s infinite;
+}
+
+@keyframes hideAndShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
