@@ -1,12 +1,56 @@
-# React + Vite
+# Chips Input Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+A React component that allows users to input and manage tags/keywords as interactive "chips".
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### 1. Input Field
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Text input field for entering new tags
+- Standard text input type
+
+### 2. Add Chips
+
+- Pressing "Enter" key adds the current text as a new chip
+- Empty or whitespace-only inputs are ignored
+- Uses `onKeyDown` event handler (not deprecated `onKeyPress`)
+
+### 3. Remove Chips
+
+- Each chip has an "X" button for removal
+- Clicking "X" removes only that specific chip
+- Duplicate chip names are handled properly (removing one doesn't affect others)
+
+### 4. Display
+
+- Chips are displayed horizontally in a list
+- Clean, compact visual design
+
+### 5. Data Persistence
+
+- Chip list persists through component re-renders
+
+## Implementation Notes
+
+- Built with React
+- Uses state management to track chips
+- Proper event handling for keyboard interactions
+- Accessible UI with clear interaction patterns
+
+## Example Usage
+
+```jsx
+<ChipsInput />
+```
+
+## Visual Reference
+
+![Chips Input Component UI](image.png)
+
+The component displays:
+
+1. An input field at the end of the chip list
+2. Existing chips as small labeled elements with "X" buttons
+3. Horizontal layout that wraps as needed
