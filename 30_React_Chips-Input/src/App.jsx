@@ -1,7 +1,11 @@
-import React from "react";
+import ChipsInput from "./components/ChipsInput";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <ChipsInput />
+    </div>
+  );
 };
 
 export default App;
