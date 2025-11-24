@@ -295,10 +295,12 @@ export default Todo;
 ```
 
 - **State**:
+
   - `task`: String state for the input field value.
   - `todos`: Array state containing all todo items, initialized from `localStorage`.
 
 - **Functions**:
+
   - `handleChange`: Updates `task` state on input change.
   - `handleAddTask`: Adds a new todo to the array, validates for empty input, generates unique ID.
   - `handleKeyDown`: Allows adding todos with Enter key.
@@ -306,6 +308,7 @@ export default Todo;
   - `handleComplete`: Toggles the `isCompleted` property of a todo.
 
 - **Effect**:
+
   - `useEffect` saves todos to `localStorage` whenever the todos array changes.
 
 - **Rendering**:
@@ -361,11 +364,13 @@ export default Item;
 ```
 
 - **Props**:
+
   - `todo`: Object containing `value`, `isCompleted`, and `id` properties.
   - `handleComplete`: Function to toggle completion status.
   - `handleDelete`: Function to delete the todo.
 
 - **State**:
+
   - `isEditing`: Boolean state for editing mode (not fully implemented).
 
 - **Rendering**:
@@ -378,18 +383,18 @@ export default Item;
 ### `App` Component
 
 ```javascript
-import './App.css'
+import "./App.css";
 import Todo from "./components/Todo.jsx";
 
 function App() {
   return (
-   <>
-     <Todo />
-   </>
-  )
+    <>
+      <Todo />
+    </>
+  );
 }
 
-export default App
+export default App;
 ```
 
 - **Purpose**: Root component that renders the main `Todo` component.
@@ -421,4 +426,3 @@ export default App
   - Conditional rendering allows dynamic UI updates based on state.
 
 ---
-
