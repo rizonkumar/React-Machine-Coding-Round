@@ -1,0 +1,88 @@
+.app {
+  width: 100%;
+  max-width: 640px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  text-align: center;
+}
+
+.app > h1 {
+  font-size: 2rem;
+}
+
+.demo-card {
+  background: #ffffff;
+  border: 1px solid #e4e7ee;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 6px 20px rgba(31, 41, 51, 0.05);
+}
+
+.demo-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #52606d;
+}
+
+.demo-hint {
+  margin: 0;
+  color: #7b8794;
+  font-size: 0.95rem;
+}
+
+.star-rating {
+  --star-fill: #ffb400;
+  --star-empty: #e2e6ee;
+  --star-stroke: #ffb400;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.star-row {
+  display: inline-flex;
+  gap: 4px;
+  outline: none;
+  border-radius: 8px;
+}
+
+.star-row:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.4);
+}
+
+.star-button {
+  display: inline-flex;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.star-row.read-only .star-button {
+  cursor: default;
+}
+
+.star-svg {
+  display: block;
+  transition: transform 0.1s ease;
+}
+
+.star-button:hover .star-svg {
+  transform: scale(1.08);
+}
+
+.star-row.read-only .star-button:hover .star-svg {
+  transform: none;
+}
+
+.star-label {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #52606d;
+  min-width: 48px;
+  text-align: left;
+}
