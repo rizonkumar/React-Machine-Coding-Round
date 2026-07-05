@@ -1,0 +1,39 @@
+[
+  {
+    "id": "c1",
+    "author": "Alice",
+    "text": "React interviews love the nested comments problem. It really tests how you think about recursion.",
+    "ageMinutes": 240,
+    "children": [
+      {
+        "id": "c1-1",
+        "author": "Bob",
+        "text": "Agreed. The tricky part is updating a deeply nested node without mutating state.",
+        "ageMinutes": 180,
+        "children": [
+          {
+            "id": "c1-1-1",
+            "author": "Alice",
+            "text": "Exactly. A recursive helper that returns a new array at each level does the job cleanly.",
+            "ageMinutes": 120,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "c1-2",
+        "author": "Carol",
+        "text": "Don't forget that deleting a comment should also remove its whole subtree.",
+        "ageMinutes": 90,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "c2",
+    "author": "Dave",
+    "text": "A single source of truth at the top with one-way data flow keeps this manageable.",
+    "ageMinutes": 45,
+    "children": []
+  }
+]
